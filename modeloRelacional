@@ -1,0 +1,58 @@
+MEMBRESIA(idMembresia, precio, tipo) 
+	PK(idMembresia) 
+
+CLIENTE(idCliente, email, cp, ciudad, numero, calle, fechaRegistro, fechaNacimiento, telefono, apellidos, nombre, idMembresia*) 
+  PK(idCliente) 
+  FK(idMembresia) -> MEMBRESIA 
+ 
+CLASE(tipo, horario, duracion, aforoMax) 
+	PK(tipo) 
+
+INCLUIR(idMembresia*, tipoClase*) 
+	PK(idMembresia, tipoClase) 
+	FK(idMembresia) -> MEMBRESIA 
+	FK(tipoClase) -> CLASE 
+
+MONITOR(idMonitor, nombre, apellidos, telefono, salario, email, puesto, dni) 
+	PK(idMonitor) 
+
+MONITORIZAR(idMonitor*, tipoClase*) 
+	PK(idMonitor, tipoClase) 
+	FK(idMonitor) -> MONITOR 
+	FK(tipoClase) -> CLASE 
+
+EJERCICIO(nombreEjercicio, peso, series, numRepeticiones, duracion) 
+	PK(nombreEjercicio) 
+
+REALIZAR(tipoClase*, nombreEjercicio*) 
+	PK(tipoClase, nombreEjercicio) 
+	FK(tipoClase) -> CLASE 
+	FK(nombreEjercicio) -> EJERCICIO 
+
+GRUPO MUSCULAR(idMusculo, descripcion, imagen) 
+	PK(idMusculo) 
+
+ENTRENAR(idMusculo*, nombreEjercicio*) 
+	PK(idMusculo, nombreEjercicio) 
+	FK(idMusculo) -> GRUPO MUSCULAR 
+	FK(nombreEjercicio) -> EJERCICIO
+
+ESPALDA(idMusculo*) 
+	PK(idMusculo) 
+	FK(idMusculo) -> GRUPO MUSCULAR 
+
+BRAZO(idMusculo*) 
+	PK(idMusculo) 
+	FK(idMusculo) -> GRUPO MUSCULAR
+
+PECHO(idMusculo*) 
+	PK(idMusculo) 
+	FK(idMusculo) -> GRUPO MUSCULAR 
+
+PIERNA(idMusculo*) 
+	PK(idMusculo) 
+	FK(idMusculo) -> GRUPO MUSCULAR 
+
+HOMBRO(idMusculo*) 
+	PK(idMusculo) 
+	FK(idMusculo) -> GRUPO MUSCULAR 
