@@ -1,7 +1,7 @@
 MEMBRESIA(idMembresia, precio, tipo) 
 	PK(idMembresia) 
 
-CLIENTE(idCliente, email, cp, ciudad, numero, calle, fechaRegistro, fechaNacimiento, telefono, apellidos, nombre, idMembresia*) 
+CLIENTE(idCliente, nombre, apellidos, email, fechaRegistro, fechaNacimiento, telefono, cp, ciudad, numero, calle, idMembresia*) 
   PK(idCliente) 
   FK(idMembresia) -> MEMBRESIA 
  
@@ -13,8 +13,9 @@ INCLUIR(idMembresia*, tipoClase*)
 	FK(idMembresia) -> MEMBRESIA 
 	FK(tipoClase) -> CLASE 
 
-MONITOR(idMonitor, nombre, apellidos, telefono, salario, email, puesto, dni) 
+MONITOR(idMonitor, dni, nombre, apellidos, telefono, salario, email, puesto) 
 	PK(idMonitor) 
+	UK(dni)
 
 MONITORIZAR(idMonitor*, tipoClase*) 
 	PK(idMonitor, tipoClase) 
