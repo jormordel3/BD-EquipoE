@@ -36,7 +36,7 @@ create table MONITOR(
 create table GRUPO_MUSCULAR(
   idMusculo int,
   descripcion varchar(64),
-  imagen img,
+  imagen blob,
   constraint PK_GRPMSC primary key(idMusculo));
 
 create table EJERCICIO(
@@ -44,7 +44,7 @@ create table EJERCICIO(
   peso decimal(3,2),
   series int,
   numRepeticiones int,
-  duracion decimal(1,2)
+  duracion decimal(2,2),
   musculo int,
   constraint PK_EJERCICIO primary key(nombre),
   constraint FK_EJERCICIO foreign key(musculo) references GRUPO_MUSCULAR(idMusculo));
@@ -52,10 +52,10 @@ create table EJERCICIO(
 create table CLASE(
   tipo  varchar(32),
   horario datetime not null,
-  duracion decimal(1,2) not null,
+  duracion decimal(2,2) not null,
   aforoMax int not null,
   nombreEjercicio varchar(64),
   monitor int,
   constraint PK_CLASE primary key(tipo),
-  constraint FK_CLASE foreign key(nombreEjercicio) references EJECICIO(nombre),
+  constraint FK_CLASE foreign key(nombreEjercicio) references EJERCICIO(nombre),
   constraint FK_CLASE2 foreign key(monitor) references MONITOR(idMonitor));
