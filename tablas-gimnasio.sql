@@ -25,7 +25,7 @@ create table MONITOR(
   idMonitor int,
   nombre varchar(128) not null,
   apellidos varchar(128) not null,
-  dni vachar(11) not null,
+  dni varchar(11) not null,
   telefono varchar(11) not null,
   email varchar(164) not null,
   salario decimal(10,2) not null,
